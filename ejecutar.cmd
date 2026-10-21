@@ -1,0 +1,16 @@
+@echo off
+setlocal
+cd /d "%~dp0"
+if not exist ".venv\Scripts\python.exe" (
+    echo Falta el entorno virtual del proyecto. Consulta README.md para instalarlo.
+    pause
+    exit /b 1
+)
+".venv\Scripts\python.exe" -c "import psutil, matplotlib" >nul 2>&1
+if errorlevel 1 (
+    echo Faltan dependencias. Ejecuta: .venv\Scripts\python.exe -m pip install -r requirements.txt
+    pause
+    exit /b 1
+)
+".venv\Scripts\python.exe" src\main.py
+if errorlevel 1 pause

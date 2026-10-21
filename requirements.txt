@@ -1,0 +1,4 @@
+# Memoria del proceso principal y sus descendientes en Windows.
+psutil>=7.2,<8
+# Gráficos integrados en Tkinter y exportación PNG.
+matplotlib>=3.10,<4
