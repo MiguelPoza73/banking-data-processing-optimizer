@@ -133,12 +133,4 @@ La interfaz utiliza un hilo de coordinación y una cola; los cálculos paralelos
 
 `--no-memory` omite la ronda de memoria. También existen `--seed` y `--threshold-cents`. Las rutas explícitas del terminal pueden sobrescribirse; la interfaz propone nombres únicos. Consulta todas las opciones con `python src/main.py --help`.
 
-## Alcance y limitaciones
 
-- No incluye una suite de tests automatizados. Sí comprueba obligatoriamente la equivalencia de los resultados completos entre estrategias durante cada comparación.
-- La regla actual es deliberadamente sencilla; no simula el coste de un sistema analítico bancario completo.
-- No hay barridos automáticos de carga ni aumento automático del volumen. Se recomienda cambiar una variable cada vez y empezar con cantidades pequeñas.
-- La memoria de la interfaz y del CLI tiene bases diferentes. Abrir gráficos carga bibliotecas y puede alterar la base de mediciones posteriores.
-- Las mediciones históricas sin lotes no son directamente comparables con el secuencial por lotes. Los CSV antiguos se conservan identificados en `results/`.
-
-Para profundizar en las decisiones, la validación, los costes del paralelismo y las limitaciones del muestreo, consulta [Metodología y guía detallada](docs/metodologia.md).
