@@ -20,6 +20,14 @@ Los datos son sintéticos. Las reglas son un simulador educativo y no constituye
 
 ## Instalación y ejecución en Windows
 
+### Descargar la aplicación sin instalar Python
+
+Descarga [BankingOptimizer.exe para Windows x64](https://github.com/MiguelPoza73/banking-data-processing-optimizer/releases/download/v1.0.0/BankingOptimizer.exe) desde la [release v1.0.0](https://github.com/MiguelPoza73/banking-data-processing-optimizer/releases/tag/v1.0.0) y ábrelo con doble clic. Incluye Python y las dependencias. Al ser un ejecutable único, el primer arranque puede tardar mientras extrae sus archivos temporales.
+
+Las mediciones incluidas en este README proceden del código Python, no del ejecutable empaquetado. La distribución ejecutable se publica para revisión manual del autor.
+
+### Ejecutar desde el código fuente
+
 Desarrollado con **Python 3.13 y Tkinter** en Windows 11 de 64 bits. No necesita GPU, servicios cloud ni bases de datos.
 
 Clona el repositorio y prepara el entorno desde PowerShell:
@@ -142,3 +150,14 @@ La interfaz utiliza un hilo de coordinación y una cola; los cálculos paralelos
 - Las mediciones históricas sin lotes no son directamente comparables con el secuencial por lotes. Los CSV antiguos se conservan identificados en `results/`.
 
 Para profundizar en las decisiones, la validación, los costes del paralelismo y las limitaciones del muestreo, consulta [Metodología y guía detallada](docs/metodologia.md).
+
+## Generar el ejecutable de Windows
+
+La aplicación se distribuye como un único `.exe` con PyInstaller, sin consola. Para compilarlo en Windows x64 desde la raíz del proyecto:
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install -r requirements-build.txt
+.\.venv\Scripts\python.exe -m PyInstaller --noconfirm --distpath dist --workpath build packaging/BankingOptimizer.spec
+```
+
+El resultado es `dist/BankingOptimizer.exe`. Las carpetas de compilación se excluyen de Git; el binario se adjunta a la release. La configuración conserva el arranque de multiprocessing mediante `freeze_support()` y no intenta activar un entorno virtual cuando la aplicación está empaquetada.
