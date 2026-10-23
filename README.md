@@ -114,21 +114,4 @@ La interfaz utiliza un hilo de coordinación y una cola; los cálculos paralelos
 
 `psutil` se incorpora para consultar también los trabajadores. Matplotlib se utiliza para los gráficos; su dependencia NumPy no participa en la generación ni en el motor de procesamiento.
 
-## Ejecución sin interfaz
 
-```powershell
-.\.venv\Scripts\python.exe src/main.py --compare --transactions 100 --repetitions 3 --batch-size 25 --csv results/mi_comparacion.csv --png results/mi_comparacion.png
-```
-
-`--no-memory` omite la ronda de memoria. También existen `--seed` y `--threshold-cents`. Las rutas explícitas del terminal pueden sobrescribirse; la interfaz propone nombres únicos. Consulta todas las opciones con `python src/main.py --help`.
-
-## Generar el ejecutable de Windows
-
-La aplicación se distribuye como un único `.exe` con PyInstaller, sin consola. Para compilarlo en Windows x64 desde la raíz del proyecto:
-
-```powershell
-.\.venv\Scripts\python.exe -m pip install -r requirements-build.txt
-.\.venv\Scripts\python.exe -m PyInstaller --noconfirm --distpath dist --workpath build packaging/BankingOptimizer.spec
-```
-
-El resultado es `dist/BankingOptimizer.exe`. Las carpetas de compilación se excluyen de Git; el binario se adjunta a la release. La configuración conserva el arranque de multiprocessing mediante `freeze_support()` y no intenta activar un entorno virtual cuando la aplicación está empaquetada.
