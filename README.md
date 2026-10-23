@@ -26,25 +26,6 @@ Descarga [BankingOptimizer.exe para Windows x64](https://github.com/MiguelPoza73
 
 Las mediciones incluidas en este README proceden del código Python, no del ejecutable empaquetado. La distribución ejecutable se publica para revisión manual del autor.
 
-### Ejecutar desde el código fuente
-
-Desarrollado con **Python 3.13 y Tkinter** en Windows 11 de 64 bits. No necesita GPU, servicios cloud ni bases de datos.
-
-Clona el repositorio y prepara el entorno desde PowerShell:
-
-```powershell
-git clone https://github.com/MiguelPoza73/banking-data-processing-optimizer.git
-cd banking-data-processing-optimizer
-python -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements-lock.txt
-.\.venv\Scripts\python.exe src/main.py
-```
-
-En Visual Studio Code, abre esta carpeta y selecciona `.venv\Scripts\python.exe` como intérprete. Tras instalar las dependencias también puedes hacer doble clic en **ejecutar.cmd**.
-
-El comando `python src/main.py` utiliza automáticamente el entorno local si se inicia desde Python global y existe `.venv`. Si ya tienes otro entorno virtual activo, se respeta tu selección. No se instalan paquetes automáticamente.
-
-Si falta Tkinter, revisa el componente Tcl/Tk de la instalación de Python; no se instala con `pip`. `requirements-lock.txt` fija las versiones usadas en las mediciones incluidas. `requirements.txt` declara rangos compatibles.
 
 ## Primer uso
 
